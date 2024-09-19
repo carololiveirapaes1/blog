@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 function insert(string $entidade, array $dados) : string
 {
     $instrucao = "INSERT INTO {$entidade}";
