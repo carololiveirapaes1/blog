@@ -1,5 +1,8 @@
+drop database if exists blog;
+
 create database blog;
 use blog;
+
 CREATE TABLE usuario (
     id int NOT NULL  AUTO_INCREMENT,
     nome varchar(50) NOT NULL,
@@ -35,5 +38,5 @@ CREATE TABLE avaliacao (
     CONSTRAINT fk_avaliacao_post FOREIGN KEY (post_id) REFERENCES post (id) 
 );
 
-insert into post (titulo, texto, usuario_id) values('titulo foda', 'texto foda interessante', '1');
+-- insert into post (titulo, texto, usuario_id) values('titulo foda', 'texto foda interessante', '1');
 

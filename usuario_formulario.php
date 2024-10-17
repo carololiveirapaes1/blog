@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>Usuário | Projeto para Web com PHP</title>
-        <link rel="stylesheet"
-              href="lib/bootstrap-4.2.1-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="lib/bootstrap-4.2.1-dist/css/bootstrap.min.css">
+
     </head>
     <body>
         <div class="container">
@@ -22,16 +23,16 @@
                         require_once 'core/sql.php';
                         require_once 'core/mysql.php';
 
-                        if(isset($_SESSION['login'])) {
-                            $id = (int) $_SESSION['login']['usuario']['id'];
+                        if(isset($_SESSION['login'])){
+                            $id = (int) $_SESSION['login'] ['usuario'] ['id'];
 
                             $criterio = [
                                 ['id', '=', $id]
                             ];
 
-                            $retorno = buscar (
+                            $retorno = buscar(
                                 'usuario',
-                                ['id', 'nome','email'],
+                                ['id', 'nome', 'email'],
                                 $criterio
                             );
 
@@ -41,31 +42,31 @@
                     <h2>Usuário</h2>
                     <form method="post" action="core/usuario_repositorio.php">
                         <input type="hidden" name="acao"
-                               value="<?php echo empty($id) ? 'insert' : 'update' ?>">
+                            value="<?php echo empty($id) ? 'insert' : 'update' ?>">
                         <input type="hidden" name="id"
-                               value="<?php echo $entidade['id'] ?? '' ?>">
+                            value="<?php echo $entidade['id'] ?? '' ?>">
                         <div class="form-group">
                             <label for="nome">Nome</label>
                             <input class="form-control" type="text"
-                                require="required" id="nome" name="nome"
-                                value="<?php echo $entidade['nome'] ?? '' ?>">
+                                required id="nome" name="nome"
+                                value="<?php echo $entidade['nome'] ?? ''?>">
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">E-mail</label>
                             <input class="form-control" type="text"
-                                require="required" id="email" name="email"
-                                value="<?php echo $entidade['email'] ?? '' ?>">
+                            required id="email" name="email"
+                            value="<?php echo $entidade['email'] ?? ''?>">
                         </div>
-                        <?php if(!isset($_SESSION['login'])): ?>
+                        <?php if(!isset($_SESSION['login'])) : ?>
                         <div class="form-group">
                             <label for="senha">Senha</label>
-                            <input class="form-control" type="text"
-                                require="required" id="senha" name="senha">
+                            <input class="form-control" type="password"
+                                required id="senha" name="senha">
                         </div>
                         <?php endif; ?>
                         <div class="text-right">
                             <button class="btn btn-success"
-                                     type="submit">Salvar</button>
+                                type="submit">Salvar</button>
                         </div>
                     </form>
                 </div>
